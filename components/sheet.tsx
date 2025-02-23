@@ -28,12 +28,16 @@ const SheetOverlay = React.forwardRef<
 ))
 SheetOverlay.displayName = "SheetOverlay"
 
+interface SheetContentProps extends React.ComponentPropsWithoutRef<typeof RadixSheet.Content> {
+  side?: "top" | "right" | "bottom" | "left"
+}
+
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof RadixSheet.Content>,
-  React.ComponentPropsWithoutRef<typeof RadixSheet.Content>
+  SheetContentProps
 >(({ className, children, side = "right", ...props }, ref) => (
   <SheetPortal>
-    <RadixSheet.Overlay />
+    <SheetOverlay />
     <RadixSheet.Content
       ref={ref}
       className={cn(
@@ -51,7 +55,7 @@ const SheetContent = React.forwardRef<
       {...props}
     >
       {children}
-      <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary"></SheetClose>
+      <SheetClose className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary" />
     </RadixSheet.Content>
   </SheetPortal>
 ))
@@ -102,4 +106,3 @@ export {
   SheetTitle,
   SheetDescription,
 }
-
