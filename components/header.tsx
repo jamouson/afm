@@ -20,22 +20,24 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4">
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="w-full sm:w-auto">
-            <div className="flex items-center gap-2 w-full">
-              <div className="flex items-center gap-2">
-                <Select>
-                  <SelectTrigger className="w-full sm:w-[140px]">
-                    <SelectValue placeholder="Department" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {departments.map((dept) => (
-                      <SelectItem key={dept} value={dept.toLowerCase()}>
-                        {dept}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                
-                <div className="hidden sm:flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row gap-2 w-full">
+              {/* Department dropdown - full width on mobile */}
+              <Select>
+                <SelectTrigger className="w-full sm:w-[140px]">
+                  <SelectValue placeholder="Department" />
+                </SelectTrigger>
+                <SelectContent>
+                  {departments.map((dept) => (
+                    <SelectItem key={dept} value={dept.toLowerCase()}>
+                      {dept}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              
+              {/* Mobile buttons row */}
+              <div className="flex items-center justify-between gap-2 sm:hidden w-full">
+                <div className="flex items-center gap-2">
                   <Button
                     variant={activeFilters.includes("onSale") ? "default" : "outline"}
                     onClick={() => toggleFilter("onSale")}
@@ -51,10 +53,7 @@ export default function Header() {
                     New Items
                   </Button>
                 </div>
-              </div>
-              
-              {/* Mobile Sort Select */}
-              <div className="sm:hidden">
+                
                 <Select>
                   <SelectTrigger className="w-[140px]">
                     <SelectValue placeholder="Sort by" />
@@ -68,24 +67,24 @@ export default function Header() {
                   </SelectContent>
                 </Select>
               </div>
-            </div>
-            
-            {/* Mobile filter buttons */}
-            <div className="flex sm:hidden items-center gap-2 w-full mt-2">
-              <Button
-                variant={activeFilters.includes("onSale") ? "default" : "outline"}
-                onClick={() => toggleFilter("onSale")}
-                className="whitespace-nowrap"
-              >
-                On Sale
-              </Button>
-              <Button
-                variant={activeFilters.includes("newItems") ? "default" : "outline"}
-                onClick={() => toggleFilter("newItems")}
-                className="whitespace-nowrap"
-              >
-                New Items
-              </Button>
+
+              {/* Desktop filter buttons */}
+              <div className="hidden sm:flex items-center gap-2">
+                <Button
+                  variant={activeFilters.includes("onSale") ? "default" : "outline"}
+                  onClick={() => toggleFilter("onSale")}
+                  className="whitespace-nowrap"
+                >
+                  On Sale
+                </Button>
+                <Button
+                  variant={activeFilters.includes("newItems") ? "default" : "outline"}
+                  onClick={() => toggleFilter("newItems")}
+                  className="whitespace-nowrap"
+                >
+                  New Items
+                </Button>
+              </div>
             </div>
           </div>
           
