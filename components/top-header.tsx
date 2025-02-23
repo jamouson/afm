@@ -29,7 +29,7 @@ export default function TopHeader() {
                 On Sale
               </a>
               <a href="#" className="text-foreground hover:text-primary transition-colors">
-                What's New
+                What&apos;s New
               </a>
             </nav>
           </div>
@@ -38,11 +38,12 @@ export default function TopHeader() {
               <a href="#" className="flex items-center text-foreground hover:text-primary transition-colors">
                 <MapPin className="w-4 h-4 mr-1" /> Locations
               </a>
+              
               <a
                 href="tel:+1234567890"
                 className="flex items-center text-foreground hover:text-primary transition-colors"
               >
-                <Phone className="w-4 h-4 mr-1" /> (123) 456-7890
+                <Phone className="w-4 h-4 mr-1" /> {`(123) 456-7890`}
               </a>
             </div>
             <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="text-foreground">
@@ -65,17 +66,18 @@ export default function TopHeader() {
                     On Sale
                   </a>
                   <a href="#" className="text-foreground hover:text-primary transition-colors">
-                    What's New
+                    What&apos;s New
                   </a>
                   <a href="#" className="flex items-center text-foreground hover:text-primary transition-colors">
                     <MapPin className="w-4 h-4 mr-2" /> Locations
-                  </a>
-                  <a
-                    href="tel:+1234567890"
-                    className="flex items-center text-foreground hover:text-primary transition-colors"
-                  >
-                    <Phone className="w-4 h-4 mr-2" /> (123) 456-7890
-                  </a>
+                    </a>
+              
+              <a
+                href="tel:+1234567890"
+                className="flex items-center text-foreground hover:text-primary transition-colors"
+              >
+                <Phone className="w-4 h-4 mr-1" /> {`(123) 456-7890`}
+              </a>
                 </nav>
               </SheetContent>
             </Sheet>
@@ -85,4 +87,3 @@ export default function TopHeader() {
     </header>
   )
 }
-
